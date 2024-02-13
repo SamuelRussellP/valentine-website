@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="background-container"></div> <!-- Container for the blurred background -->
+<div class="content-container">
+  <div class="question-container">
+    <h1>IMPORTANT!!!</h1>
+    <p>Will you go out with me on the 14th of February 2024?</p>
+    <div class="buttons">
+      <a href="form.html" class="yes-button">YES, OF KORS!</a>
+      <a href="#" class="no-button" id="thinkButton">I'm sorry, NO!</a>
+    </div>
+  </div>
+</div>
+<script>
+  const thinkButton = document.getElementById('thinkButton');
+  thinkButton.addEventListener('mouseover', function() {
+    // Define margins as safe zones
+    const margin = 80; // Increase if necessary
+
+    // Viewport dimensions
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    // Generate a random position within the viewport, avoiding the central area
+    function generatePosition() {
+      // Divide the viewport into quadrants and avoid placing the button in the central quadrant
+      let pos = { x: 0, y: 0 };
+
+      // Randomly choose a quadrant for the button to move to
+      // 1: top-left, 2: top-right, 3: bottom-left, 4: bottom-right
+      const quadrant = Math.floor(Math.random() * 4) + 1;
+
+      switch (quadrant) {
+        case 1: // Top-left
+          pos.x = Math.random() * (viewportWidth / 2 - margin - thinkButton.offsetWidth);
+          pos.y = Math.random() * (viewportHeight / 2 - margin - thinkButton.offsetHeight);
+          break;
+        case 2: // Top-right
+          pos.x = Math.random() * (viewportWidth / 2 - margin - thinkButton.offsetWidth) + viewportWidth / 2 + margin;
+          pos.y = Math.random() * (viewportHeight / 2 - margin - thinkButton.offsetHeight);
+          break;
+        case 3: // Bottom-left
+          pos.x = Math.random() * (viewportWidth / 2 - margin - thinkButton.offsetWidth);
+          pos.y = Math.random() * (viewportHeight / 2 - margin - thinkButton.offsetHeight) + viewportHeight / 2 + margin;
+          break;
+        case 4: // Bottom-right
+          pos.x = Math.random() * (viewportWidth / 2 - margin - thinkButton.offsetWidth) + viewportWidth / 2 + margin;
+          pos.y = Math.random() * (viewportHeight / 2 - margin - thinkButton.offsetHeight) + viewportHeight / 2 + margin;
+          break;
+      }
+
+      return pos;
+    }
+
+    const newPos = generatePosition();
+
+    // Apply the new position
+    thinkButton.style.position = 'fixed';
+    thinkButton.style.left = `${newPos.x}px`;
+    thinkButton.style.top = `${newPos.y}px`;
+    thinkButton.style.backgroundColor = 'white';
+    thinkButton.style.color = '#F44336';
+    thinkButton.textContent = "No No wek";
+  });
+</script>
+</body>
+</html>

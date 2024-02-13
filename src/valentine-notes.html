@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Valentine's Day</title>
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Roboto', sans-serif;
+      background: url('resources/ME_03778.jpg') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(0);
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150%;
+      background-image: url('resources/ME_03804.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px);
+      z-index: -1;
+    }
+
+    .p2{
+      font-size: 15px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .content-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+      z-index: 3
+    }
+
+    .valentine-card {
+      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      text-align: left; /* Align text to the left for letter format */
+      font-family: 'Dancing Script', cursive; /* Handwritten effect */
+      opacity: 1;
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .valentine-card.dinner-invitation {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      max-width: 600px;
+      text-align: left;
+      font-family: 'Roboto', sans-serif;
+      animation: slideIn 1s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .invitation-title {
+      font-family: 'Great Vibes', cursive;
+      color: #d72631;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .valentine-card h1, .valentine-card h2 {
+      font-family: 'Parisienne', cursive;
+      text-align: center; /* Center headings for emphasis */
+      color: darkred;
+    }
+
+    .memory-card-1 {
+      width: 90%;
+      height: 400px;
+      background-size: cover;
+      background-position: 70% 42.5%;
+      margin: 20px 0;
+      opacity: 0; /* Initially hidden */
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      visibility: hidden; /* Initially hidden */
+    }
+
+    .memory-card-2 {
+      width: 90%;
+      height: 400px;
+      background-size: cover;
+      background-position: 70% 60%;
+      margin: 20px 0;
+      opacity: 0; /* Initially hidden */
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      visibility: hidden; /* Initially hidden */
+    }
+
+    .memory-card-3 {
+      width: 90%;
+      height: 900px;
+      background-size: cover;
+      background-position: 70% 60%;
+      margin: 20px 0;
+      opacity: 0; /* Initially hidden */
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      visibility: hidden; /* Initially hidden */
+    }
+
+    /*I want the image to be inside the frame and fit*/
+    .memory-card-4 {
+      width: 95%; /* Increase width */
+      height: 800px; /* Increase height */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin: 20px 0;
+      opacity: 0; /* Initially hidden */
+      transform: translateY(10px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      visibility: hidden; /* Initially hidden */
+    }
+
+
+
+      @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .scroll-down-arrow {
+      opacity: 50%;
+      font-size: 30px; /* Adjust size as needed */
+      color: white; /* Arrow color */
+      position: absolute;
+      bottom: -320px; /* Position from the bottom of the content-container */
+      left: 50%;
+      transform: translateX(-50%); /* Center horizontally */
+      animation: bounce 1.5s infinite;
+      z-index: 2;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-20px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+
+    .invitation-title {
+      font-family: 'Great Vibes', cursive;
+      color: #d72631;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .invitation-detail {
+      display: block;
+      background-color: #f8e8e8;
+      color: #6d213c;
+      padding: 5px 10px;
+      margin: 10px auto;
+      border-radius: 5px;
+      width: fit-content;
+      font-weight: bold;
+    }
+
+    .photo-cta {
+      text-align: center;
+      margin: 20px 0; /* Adjust top/bottom margin as needed */
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 80%; /* Control width */
+      max-width: 600px; /* Maximum width */
+      font-family: 'Roboto', sans-serif;
+      /*position in center of screen */
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: bounce 2s infinite;
+      z-index: 2; /* Ensure it's above other content if needed */
+    }
+
+    .photo-cta p {
+      margin: 10px 0;
+      color: #6d213c;
+      font-size: 18px;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="background"></div>
+<div class="scroll-down-arrow">↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓</div>
+<div class="container">
+  <div class="content-container">
+    <div class="valentine-card center-card">
+      <h1>Happy Valentine's Day, Sayang!</h1>
+      <p>Today is our first valentine's day together! Perasaan taun lalu baru kasih bunga, eh udah valentine lagi. Aku masih inget kita masih jaman2 pdkt and masih malu2 satu sama lain.
+      Eh tapi sekarang udah ga tau malu hehehe.. BAHKAN KITA UDAH PERNAH LIBURAN KE KOREA BARENG!! I am very happy for us right now, though aku ada something to say to you...</p>
+      <br>
+      <p>In this special day, aku mau say sorry that..</p>
+      <p> - I often make you sad</p>
+      <p> - I sometimes don't understand you well</p>
+      <p> - I am not always as you expected</p>
+      <br>
+      <p>But despite all this, I am very glad that we are now in a relationship together. I want you to know that I love you really much. Semua rintangan pasti ada jalannya, aku yakin kita bisa go through any hardships and sorrow together.
+        But of kors juga when time goes by, pasti udah lebih saling ngerti lagi and bisa minimalisir fights to happen </p>
+      <p>My wish for us in this year is of kors so that kita bisa lebih mengerti again satu sama lain, lebih sabar menghadapi satu sama lain and always support one another.</p>
+      <p>Once again Happy Valentine to my one and only girlfriend. Sending you lots of love. STAY WITH ME AND LONGLAST WITH OKEII HEHE I believe that God will lead the way for us❤️</p>
+      <br>
+      <p>With Love,</p>
+      <p>Samuel Russell</p>
+    </div>
+    <div class="valentine-card center-card">
+      <p class = p2>Here are some memories of our journey together. To more Valentines with you!!</p>
+    </div>
+  </div>
+
+  <!-- Memory cards -->
+  <div class="memory-card-1" style="background-image: url('resources/ME_03727.jpg');"></div>
+  <div class="memory-card-2" style="background-image: url('resources/ME_04188.jpg');"></div>
+  <div class="memory-card-3" style="background-image: url('resources/DiIstanaBerduaKecil.jpg');"></div>
+  <div class="memory-card-4" style="background-image: url('resources/SelfieDiLotte.jpg');"></div>
+  <div class="memory-card-4" style="background-image: url('resources/SelfieDiBioskop.jpg');"></div>
+  <div class="memory-card-4" style="background-image: url('resources/FotoStuddioDiMobil.jpg');"></div>
+  <div class="memory-card-4" style="background-image: url('resources/MCDdiMobil.jpg');"></div>
+  <div class="memory-card-4" style="background-image: url('resources/BusanRumahWarnaWarni.jpg');"></div>
+  <!-- Add more memory cards as needed -->
+
+  <div class="valentine-card dinner-invitation">
+    <h2 class="invitation-title">Special Dinner Invitation</h2>
+    <p>Dear Jessica Haris,</p>
+    <p>In order to celebrate this special moment, I am inviting you to a special valentine dinner with me!</p>
+    <span class="invitation-detail">Date: <span id="date"></span></span>
+    <span class="invitation-detail">Time: <span id="time"></span></span>
+    <span class="invitation-detail">Venue: <span id="venue"></span></span>
+    <span class="invitation-detail">Dress Code: <span id="dress_code"></span></span>
+  </div>
+  <div class="photo-cta">
+    <p>📸 CAPTURE! 📸</p>
+    <p>Take a picture of the invitation! You might need it!</p>
+  </div>
+  </div>
+<audio autoplay loop>
+  <source src="resources/Until%20I%20Found%20You%20-%20Stephen%20Sanchez%20-%20Cover%20(Violin).mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          entry.target.style.visibility = 'visible';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.memory-card-1,.memory-card-2, .memory-card-3, .memory-card-4, .dinner-invitation').forEach(card => {
+      observer.observe(card);
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    // Retrieve stored values from localStorage
+    const dressCode = localStorage.getItem('dress_code');
+    const location = localStorage.getItem('location');
+    const date = localStorage.getItem('date');
+    const time = localStorage.getItem('time');
+
+    // Update the dinner invitation details with the retrieved values
+    document.getElementById('date').textContent = date;
+    document.getElementById('time').textContent = time;
+    document.getElementById('venue').textContent = location;
+    document.getElementById('dress_code').textContent = dressCode;
+  });
+</script>
+</body>
+</html>

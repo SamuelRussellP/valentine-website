@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form - Be My Valentine</title>
+  <link rel="stylesheet" href="style.css"> <!-- Adjust the href as needed -->
+</head>
+<body>
+<div class="background-container"></div> <!-- Ensures the blurred background -->
+<div class="content-container">
+  <div class="form-container">
+    <h1>Dinner Invitation</h1>
+    <div class="form-group">
+      <label for="name">Specially Inviting:</label>
+      <input type="text" id="name" name="name" value="Jessica Haris" required readonly class="readonly-input">
+    </div>
+    <div class="form-group">
+      <label for="dress_code">Dress Code (Color):</label>
+      <input type="text" id="dress_code" name="dress_code" required>
+      <span id="dress_code_error" class="error-message"></span>
+    </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" value="Hiyoko 2.0, BSD, Tangerang" required readonly class="readonly-input">
+    </div>
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" value="2024-02-14" required readonly class="readonly-input">
+    </div>
+    <div class="form-group">
+      <label for="time">Booked Time:</label>
+      <input type="time" id="time" name="time" value="18:00" required readonly class="readonly-input">
+    </div>
+    <form action="valentine-notes.html">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("form");
+    form.onsubmit = function(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Clear previous error messages
+      document.getElementById('dress_code_error').textContent = '';
+
+      // Retrieve the input values
+      const nameValue = document.getElementById('name').value;
+      const dressCodeValue = document.getElementById('dress_code').value;
+      const locationValue = document.getElementById('location').value;
+      const dateValue = document.getElementById('date').value;
+      const timeValue = document.getElementById('time').value;
+
+      // Validation: Ensure dress_code is not empty
+      if (dressCodeValue.trim() === '') {
+        document.getElementById('dress_code_error').textContent = 'Please enter dress code color';
+        document.getElementById('dress_code').focus();
+        return false; // Prevent form from submitting
+      }
+
+      // Store form data in localStorage if validation passes
+      localStorage.setItem('name', nameValue);
+      localStorage.setItem('dress_code', dressCodeValue);
+      localStorage.setItem('location', locationValue);
+      localStorage.setItem('date', dateValue);
+      localStorage.setItem('time', timeValue);
+
+      // Redirect to valentine-notes.html after storing data
+      window.location.href = "valentine-notes.html";
+    };
+  });
+</script>
+</body>
+</html>

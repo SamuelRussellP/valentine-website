@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling on the page */
+  font-family: 'Roboto', sans-serif; /* Updated to use Google Fonts for a more sophisticated look */
+}
+
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('resources/Roses-background.jpg'); /* Ensure this path is correct */
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px); /* Apply blur effect to the background image */
+  z-index: -1; /* Ensure background is behind all other content */
+}
+
+.content-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Ensure content is above the blurred background */
+}
+
+.form-container, .container, .question-container {
+  text-align: center;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 80%;
+  max-width: 600px; /* Controls maximum width */
+  position: relative;
+  z-index: 1;
+  margin: 20px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-container:hover, .container:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.form-group {
+  text-align: left; /* Aligns the text to the left */
+  margin: 10px 0; /* Adds some margin for spacing between form groups */
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensures form group takes full width of its container */
+}
+
+.form-container form, .question-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center aligns form elements */
+}
+
+input[type="text"], input[type="time"], button, .form-group input, .form-group button {
+  width: 100%; /* Makes input fields and button fill their container */
+  max-width: 400px; /* Uniform maximum width for all inputs and button */
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* Ensures padding and border are included in the size */
+  transition: all 0.2s ease-in-out; /* Smooth transition for focus and hover */
+}
+
+.readonly-input {
+  background-color: #f0f0f0; /* Light grey background */
+  color: #686868; /* Darker grey text */
+  border: 1px solid #cccccc;
+  cursor: not-allowed; /* Indicates the field is not editable */
+}
+
+button {
+  background-color: #009688; /* Button background color */
+  color: white; /* Button text color */
+  font-weight: 700;
+  cursor: pointer; /* Changes the cursor to indicate the button is clickable */
+  border: none; /* Removes the default border */
+}
+
+button:hover {
+  background-color: #00796B; /* Darker shade for the hover state */
+}
+
+input[type="text"]:focus, input[type="time"]:focus {
+  border-color: #009688; /* Highlight color for focused inputs */
+  box-shadow: 0 0 8px rgba(0,150,136,0.2); /* Glow effect for focus */
+}
+
+h1, p {
+  color: #D72631;
+  margin: 20px 0;
+}
+
+.buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.yes-button, .no-button {
+  background-color: #cc187e; /* Initial background color */
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
